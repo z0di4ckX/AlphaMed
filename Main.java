@@ -10,10 +10,10 @@ public class Main {
         *
         *
         * mising----
-        * login() incomplete
-        * if login() is not correct, keep looping. do no open menu()
-        * open menu() if login succesful
-        * all other methods also incomplete
+        * login() incomplete, almost complete
+        * 
+        * showItems() incomplete
+        * 
         */
          JOptionPane.showMessageDialog(null, "Welcome our App");
          JOptionPane.showMessageDialog(null, "The creator is: Wesly J. Hernandez, Giancarlo, Jeremy");
@@ -22,7 +22,7 @@ public class Main {
          App test = new App(); // App class
          LogIn login = new LogIn(); // logIn class
      
-         login.login(); // call login method
+         //login.login(); // call login method
          test.menu(); // call menu method
        }
 }
