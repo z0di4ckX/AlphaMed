@@ -21,7 +21,7 @@ public class Main {
          // none of this main is for end product. Just testing method functionality
          App test = new App(); // App class
          LogIn login = new LogIn(); // logIn class
-     
+
          login.login(); // call login method
          test.menu(); // call menu method
        }

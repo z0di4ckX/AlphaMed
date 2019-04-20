@@ -86,14 +86,32 @@ public class App extends Main{
          }
       }
       catch (Exception e) {
-         // not argument
+         // not arrgument
       }
-      JOptionPane.showMessageDialog(null, "Showing items");
+      JOptionPane.showMessageDialog(null, "Showing items", "Show Items", JOptionPane.INFORMATION_MESSAGE);
       
    }
         
-   public void deleteItems() { // option 'c'
-      JOptionPane.showConfirmDialog(null,"Are you sure you want to delete a product? ", "Delete the items", JOptionPane.YES_NO_CANCEL_OPTION);
+   public void deleteItems() { // option 'c' - Delete the existing file
+   /*
+    * It is necessary to improve the code to delete the files, add the .txt so that the user does not have to put it. 
+    * At the moment the code works well and deletes the file that is selected
+    */
+   
+      File files = new File(JOptionPane.showInputDialog(null, "Name of file and add the .txt: ", "File name", JOptionPane.INFORMATION_MESSAGE)); // add .txt
+
+      try {
+         
+         if (files.delete()) {
+            JOptionPane.showMessageDialog(null, "This file was deleted", "Delete Itmes", JOptionPane.INFORMATION_MESSAGE); // delete the file
+         }
+         else {
+            JOptionPane.showMessageDialog(null, "This file does not exist, please try again and enter the correct name", "Delete Itmes", JOptionPane.INFORMATION_MESSAGE); // error message
+         }
+      }
+      catch(Exception e) {
+         System.out.println(e);
+      }
    }
 }
 
