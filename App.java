@@ -43,11 +43,11 @@ public class App extends Main{
       String itemsCode = JOptionPane.showInputDialog(null, "Items code:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE); // Items code
       int day = Integer.parseInt(JOptionPane.showInputDialog(null, "Date of lot bought:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
       int expiry = Integer.parseInt(JOptionPane.showInputDialog(null, "Date of lot expiration:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE)); // Expiration date
-      int bs = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantity bought:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));// bought stack
-      int available = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantity available:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE)); // Quantity available
+      int lot = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantity bought:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));// bought stack
       int damaged = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantity damaged:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE)); // Quantity damaged
-      int quantity = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantity Sold:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
+      int sold = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantity Sold:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
       int price = Integer.parseInt(JOptionPane.showInputDialog(null, "Prices of products:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
+      int available = lot - damaged - sold;
 
       Vector v = new Vector();
       v.add(name);
@@ -55,14 +55,14 @@ public class App extends Main{
       v.add(itemsCode);
       v.add(day);
       v.add(expiry);
-      v.add(bs);
+      v.add(lot);
       v.add(available);
       v.add(damaged);
-      v.add(quantity);
+      v.add(sold);
       v.add(price);
 
       return (v);
-    }
+    }// addItems
         
    public void printItems() { // Uses information gathered in addItems()
       file = JOptionPane.showInputDialog(null, "Name of file:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
@@ -81,11 +81,12 @@ public class App extends Main{
          fileOutput.println("Expiration: "+ve.get(7));
          fileOutput.println("Sold: "+ve.get(8));
          fileOutput.println("Price: "+ve.get(9));
-         fileOutput.close();
+
       } catch(Exception e){
-         System.out.println("Error");
+         System.out.println(e);
       }
-   }
+      fileOutput.close();
+   } // printItems
         
    public void showItems() { // option 'b'- Displays items already registered
       String [] item = new String[10];
@@ -95,25 +96,32 @@ public class App extends Main{
          reader = new FileReader(file + ".txt");
          fileInput = new Scanner(reader);
 
-         while(fileInput.hasNext()) {
-            strLine = fileInput.nextLine();
-            JOptionPane.showMessageDialog(null, strLine, "Show items", JOptionPane.PLAIN_MESSAGE);
-         }
+         for (int i = 0; i < item.length; i++) { // appends .txt file lines to array
+            if (fileInput.hasNext()) {
+               strLine = fileInput.nextLine();
+               item[i] = strLine;
+            }
+         } // end for
+
+         //Display file contents
+         JOptionPane.showMessageDialog(null, 
+            item[0] + " ---- " + item[2] + "\n" +
+            item[1] + "\n" +
+            item[3] + "\n" +
+            item[4] + "\n" +
+            item[5] + "\n" +
+            item[6] + "\n" +
+            item[7] + "\n" +
+            item[8] + "\n" +
+            item[9], "Show items", JOptionPane.PLAIN_MESSAGE);
       }
       catch (Exception e) {
-         // not arrgument
+         System.out.println(e);
       }
-      
-      
-   }
+      fileInput.close();
+   } // Show items
         
    public void deleteItems() { // option 'c' - Delete the existing file
-   /*
-    * It is necessary to improve the code to delete the files, add the .txt so that the user does not have to put it. 
-    * At the moment the code works well and deletes the file that is selected
-    * Fix it the dalte algorithm
-   */
-
       try {
          File files = new File(JOptionPane.showInputDialog(null, "Name of file: ", "File name", JOptionPane.INFORMATION_MESSAGE)); // add .txt
          files = new File(files + ".txt");
