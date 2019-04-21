@@ -28,7 +28,7 @@ public class App extends Main{
                deleteItems();
            }
             else if (listMenu.equals ("x")) {
-                JOptionPane.showMessageDialog(null, "Thank you for user own system. See it soon!", "Exit!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Thank you for using our system. See you soon!", "Exit!", JOptionPane.INFORMATION_MESSAGE);
                 System.exit(0);
             }
             else {
@@ -39,10 +39,10 @@ public class App extends Main{
      
    public Vector addItems() { // option 'a'
       String name = JOptionPane.showInputDialog(null, "Name of product:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE);
-      int day = Integer.parseInt(JOptionPane.showInputDialog(null, "Day you bought the lot:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
-      int bs = Integer.parseInt(JOptionPane.showInputDialog(null, "How many do you bought product:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));// bought stack
-      int quantity = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantity Sold of product:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
-      int price = Integer.parseInt(JOptionPane.showInputDialog(null, "Items Prices of product:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
+      int day = Integer.parseInt(JOptionPane.showInputDialog(null, "Date of lot bought:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
+      int bs = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantity bought:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));// bought stack
+      int quantity = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantity Sold:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
+      int price = Integer.parseInt(JOptionPane.showInputDialog(null, "Prices of products:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
 
       Vector v = new Vector();
       v.add(name);
