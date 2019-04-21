@@ -82,13 +82,13 @@ public class App extends Main{
 
          while(fileInput.hasNext()) {
             strLine = fileInput.nextLine();
-            System.out.println(strLine);
+            JOptionPane.showMessageDialog(null, strLine, "Show items", JOptionPane.PLAIN_MESSAGE);
          }
       }
       catch (Exception e) {
          // not arrgument
       }
-      JOptionPane.showMessageDialog(null, "Showing items", "Show Items", JOptionPane.INFORMATION_MESSAGE);
+      
       
    }
         
@@ -96,7 +96,8 @@ public class App extends Main{
    /*
     * It is necessary to improve the code to delete the files, add the .txt so that the user does not have to put it. 
     * At the moment the code works well and deletes the file that is selected
-    */
+    * Fix it the dalte algorithm
+   */
    
       File files = new File(JOptionPane.showInputDialog(null, "Name of file and add the .txt: ", "File name", JOptionPane.INFORMATION_MESSAGE)); // add .txt
 
