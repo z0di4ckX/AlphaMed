@@ -41,12 +41,12 @@ public class App extends Main{
       String name = JOptionPane.showInputDialog(null, "Name of product:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE);
       String description = JOptionPane.showInputDialog(null, "Description of the items:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE); // Description product
       String itemsCode = JOptionPane.showInputDialog(null, "Items code:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE); // Items code
-      int day = Integer.parseInt(JOptionPane.showInputDialog(null, "Date of lot bought:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
-      int expiry = Integer.parseInt(JOptionPane.showInputDialog(null, "Date of lot expiration:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE)); // Expiration date
+      String day = JOptionPane.showInputDialog(null, "Date of lot bought:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE);
+      String expiry = JOptionPane.showInputDialog(null, "Date of lot expiration:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE); // Expiration date
       int lot = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantity bought:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));// bought stack
       int damaged = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantity damaged:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE)); // Quantity damaged
       int sold = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantity Sold:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
-      int price = Integer.parseInt(JOptionPane.showInputDialog(null, "Prices of products:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
+      double price = Double.parseDouble(JOptionPane.showInputDialog(null, "Prices of products:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
       int available = lot - damaged - sold;
 
       Vector v = new Vector();
@@ -80,7 +80,7 @@ public class App extends Main{
          fileOutput.println("Available: "+ve.get(6));
          fileOutput.println("Expiration: "+ve.get(7));
          fileOutput.println("Sold: "+ve.get(8));
-         fileOutput.println("Price: "+ve.get(9));
+         fileOutput.println("Price: $ "+ve.get(9));
 
       } catch(Exception e){
          System.out.println(e);
