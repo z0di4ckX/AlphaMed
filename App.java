@@ -48,6 +48,7 @@ public class App extends Main{
       int sold = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantity Sold:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
       double price = Double.parseDouble(JOptionPane.showInputDialog(null, "Prices of products:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
       int available = lot - damaged - sold;
+      double total = sold * price;
 
       Vector v = new Vector();
       v.add(name);
@@ -60,6 +61,7 @@ public class App extends Main{
       v.add(damaged);
       v.add(sold);
       v.add(price);
+      v.add(total);
 
       return (v);
     }// addItems
@@ -81,6 +83,7 @@ public class App extends Main{
          fileOutput.println("Expiration: "+ve.get(7));
          fileOutput.println("Sold: "+ve.get(8));
          fileOutput.println("Price: $ "+ve.get(9));
+         fileOutput.println("Total: $ "+ve.get(10));
 
       } catch(Exception e){
          System.out.println(e);
@@ -89,7 +92,7 @@ public class App extends Main{
    } // printItems
         
    public void showItems() { // option 'b'- Displays items already registered
-      String [] item = new String[10];
+      String [] item = new String[11];
 
       file = JOptionPane.showInputDialog(null, "Name of file:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
       try {
@@ -113,7 +116,8 @@ public class App extends Main{
             item[6] + "\n" +
             item[7] + "\n" +
             item[8] + "\n" +
-            item[9], "Show items", JOptionPane.PLAIN_MESSAGE);
+            item[9] + "\n" +
+            item[10], "Show items", JOptionPane.PLAIN_MESSAGE);
       }
       catch (Exception e) {
          System.out.println(e);
@@ -138,4 +142,3 @@ public class App extends Main{
       }
    }
 }
-
