@@ -9,20 +9,19 @@ public class Main {
         * First we must complete the methods
         *
         *
-        * mising----
-        * login() incomplete
+        * login() complete
         * if login() is not correct, keep looping. do no open menu()
         * open menu() if login succesful
-        * all other methods also incomplete
+        * all other methods also complete
         */
          JOptionPane.showMessageDialog(null, "Welcome our App");
-         JOptionPane.showMessageDialog(null, "The creator is: Wesly J. Hernandez, Giancarlo, Jeremy");
+         JOptionPane.showMessageDialog(null, "The creator is: Wesly J. Hernandez, Giancarlo E. Ventura, Jeremy Del Valle");
          
          // none of this main is for end product. Just testing method functionality
-         App test = new App(); // App class
+         App app = new App(); // App class
          LogIn login = new LogIn(); // logIn class
 
          login.login(); // call login method
-         test.menu(); // call menu method
+         app.menu(); // call menu method
        }
 }
