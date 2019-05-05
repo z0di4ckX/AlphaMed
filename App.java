@@ -128,7 +128,7 @@ public class App extends Main{
       fileInput.close();
    } // Show items
 
-   public Vector patients() {
+   public Vector patients() { // opcion 'C' - creaing patient file
       String nameOfPatients = JOptionPane.showInputDialog(null, "Name:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE);
       int age = Integer.parseInt(JOptionPane.showInputDialog(null, "Age:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE));
       char sex = JOptionPane.showInputDialog(null, "Sex, please enter (M) for Men of (F) for Femal:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE).charAt(0);
@@ -144,7 +144,7 @@ public class App extends Main{
       return (vec);
    }
 
-   public void printPatients() {
+   public void printPatients() { // print patient data
    
       patientFile = JOptionPane.showInputDialog(null, "Name of the patient file:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
 
@@ -161,9 +161,10 @@ public class App extends Main{
       catch (Exception e) {
         System.out.println(e);
       }
+      fileOutput.close();
    }
         
-   public void deleteItems() { // option 'c' - Delete the existing file
+   public void deleteItems() { // option 'D' - Delete the existing file
       try {
 
          File files = new File(JOptionPane.showInputDialog(null, "Name of file:\n", "File name", JOptionPane.INFORMATION_MESSAGE)); // add .txt
