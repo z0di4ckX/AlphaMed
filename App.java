@@ -3,7 +3,7 @@ import java.util.*;
 import java.io.*;
 
 public class App extends Main{
-   String file, files, outputDoc, strLine, error; // variable
+   String file, files, patientFile, outputDoc, strLine, error; // variable
            
    FileReader reader; // Opens existing document
    Scanner fileInput; // Allows us to see contents inside of document
@@ -16,7 +16,7 @@ public class App extends Main{
         String listMenu = " "; 
 
         do {
-            listMenu = JOptionPane.showInputDialog(null, "a. Add items\n b. Show items\n c. Remove items\n x. Exit", "Menu", JOptionPane.INFORMATION_MESSAGE);
+            listMenu = JOptionPane.showInputDialog(null, "a. Add items\n b. Show items\n c. patients registration\n d. Remove items\n x. Exit", "Menu", JOptionPane.INFORMATION_MESSAGE);
             
             if (listMenu.equals ("a")) {
                printItems();
@@ -24,7 +24,10 @@ public class App extends Main{
             else if (listMenu.equals ("b")) { 
                 showItems();
             }
-            else if (listMenu.equals ("c")) {
+            else if (listMenu.equals("c")) {
+               patients();
+            }
+            else if (listMenu.equals ("d")) {
                deleteItems();
            }
             else if (listMenu.equals ("x")) {
@@ -124,11 +127,46 @@ public class App extends Main{
       }
       fileInput.close();
    } // Show items
+
+   public Vector patients() {
+      String nameOfPatients = JOptionPane.showInputDialog(null, "Name:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE);
+      int age = Integer.parseInt(JOptionPane.showInputDialog(null, "Age:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE));
+      char sex = JOptionPane.showInputDialog(null, "Sex, please enter (M) for Men of (F) for Femal:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE).charAt(0);
+      String patientsDescription = JOptionPane.showInputDialog(null, "Description of the patient\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE);
+
+      Vector vec = new Vector();
+
+      vec.add(nameOfPatients);
+      vec.add(age);
+      vec.add(sex);
+      vec.add(patientsDescription);
+
+      return (vec);
+   }
+
+   public void printPatients() {
+   
+      patientFile = JOptionPane.showInputDialog(null, "Name of the patient file:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
+
+      try {
+         fileOutput = new PrintWriter(patientFile + ".txt");
+
+         Vector vec1 = this.patients();
+
+         fileOutput.println("Name of the patients: " + vec1.get(0));
+         fileOutput.println("Age of the patients: " + vec1.get(1));
+         fileOutput.println("Sex of the patients: " + vec1.get(2));
+         fileOutput.println("Description of the patients: " + vec1.get(3));
+      } 
+      catch (Exception e) {
+        System.out.println(e);
+      }
+   }
         
    public void deleteItems() { // option 'c' - Delete the existing file
       try {
 
-         File files = new File(JOptionPane.showInputDialog(null, "Name of file: ", "File name", JOptionPane.INFORMATION_MESSAGE)); // add .txt
+         File files = new File(JOptionPane.showInputDialog(null, "Name of file:\n", "File name", JOptionPane.INFORMATION_MESSAGE)); // add .txt
          files = new File(files + ".txt");
 
          if (files.delete()) {
