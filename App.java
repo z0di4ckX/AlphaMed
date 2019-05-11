@@ -16,7 +16,7 @@ public class App extends Main{
         String listMenu = " "; 
 
         do {
-            listMenu = JOptionPane.showInputDialog(null, "a. Add items\n b. Show items\n c. patients registration\n d. Remove items\n x. Exit", "Menu", JOptionPane.INFORMATION_MESSAGE);
+            listMenu = JOptionPane.showInputDialog(null, "a. Add items\n b. Show items\n c. patients registration\n d. show patients\n e. Remove items\n x. Exit", "Menu", JOptionPane.INFORMATION_MESSAGE);
             
             if (listMenu.equals ("a")) {
                printItems();
@@ -25,9 +25,12 @@ public class App extends Main{
                 showItems();
             }
             else if (listMenu.equals("c")) {
-               patients();
+               printPatients();
             }
-            else if (listMenu.equals ("d")) {
+            else if (listMenu.equals("d")) {
+               showPatients();
+            }
+            else if (listMenu.equals ("e")) {
                deleteItems();
            }
             else if (listMenu.equals ("x")) {
@@ -132,14 +135,14 @@ public class App extends Main{
       String nameOfPatients = JOptionPane.showInputDialog(null, "Name:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE);
       int age = Integer.parseInt(JOptionPane.showInputDialog(null, "Age:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE));
       char sex = JOptionPane.showInputDialog(null, "Sex, please enter (M) for Men of (F) for Femal:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE).charAt(0);
-      String patientsDescription = JOptionPane.showInputDialog(null, "Description of the patient\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE);
+      String patientsAddress = JOptionPane.showInputDialog(null, " Patients address:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE);
 
       Vector vec = new Vector();
 
       vec.add(nameOfPatients);
       vec.add(age);
       vec.add(sex);
-      vec.add(patientsDescription);
+      vec.add(patientsAddress);
 
       return (vec);
    }
@@ -156,7 +159,7 @@ public class App extends Main{
          fileOutput.println("Name of the patients: " + vec1.get(0));
          fileOutput.println("Age of the patients: " + vec1.get(1));
          fileOutput.println("Sex of the patients: " + vec1.get(2));
-         fileOutput.println("Description of the patients: " + vec1.get(3));
+         fileOutput.println("patients Addresss: " + vec1.get(3));
       } 
       catch (Exception e) {
         System.out.println(e);
@@ -165,26 +168,26 @@ public class App extends Main{
    }
 
    public void showPatients() { // showing patients regitration
-      String showPatientsItems[] = new String[5];
+      String [] patientItem = new String[4];
 
-      file = JOptionPane.showInputDialog(null, "Name of the patients file:\n", "File name",JOptionPane.INFORMATION_MESSAGE);
-
+      patientFile = JOptionPane.showInputDialog(null, "Name of Patiants ragister:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
       try {
-         reader = new FileReader(file + ".txt");
+         reader = new FileReader(patientFile + ".txt");
          fileInput = new Scanner(reader);
 
-         for (int i = 0; i < showPatientsItems.length; i++) {
+         for (int i = 0; i < patientItem.length; i++) { // appends .txt file lines to array
             if (fileInput.hasNext()) {
                strLine = fileInput.nextLine();
-               showPatientsItems[i] = strLine;
+               patientItem[i] = strLine;
             }
-         }
+         } // end for
 
+         //Display file contents
          JOptionPane.showMessageDialog(null, 
-            showPatientsItems[0] + "\n" +
-            showPatientsItems[1] + "\n" +
-            showPatientsItems[2] + "\n" +
-            showPatientsItems[3] , "Show items", JOptionPane.PLAIN_MESSAGE);
+         patientItem[0] + "\n" +
+         patientItem[1] + "\n" +
+         patientItem[2] + "\n" +
+         patientItem[3], "Show Patients Registration", JOptionPane.PLAIN_MESSAGE);
 
       } 
       catch (Exception e) {
