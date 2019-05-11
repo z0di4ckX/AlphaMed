@@ -163,6 +163,35 @@ public class App extends Main{
       }
       fileOutput.close();
    }
+
+   public void showPatients() { // showing patients regitration
+      String showPatientsItems[] = new String[5];
+
+      file = JOptionPane.showInputDialog(null, "Name of the patients file:\n", "File name",JOptionPane.INFORMATION_MESSAGE);
+
+      try {
+         reader = new FileReader(file + ".txt");
+         fileInput = new Scanner(reader);
+
+         for (int i = 0; i < showPatientsItems.length; i++) {
+            if (fileInput.hasNext()) {
+               strLine = fileInput.nextLine();
+               showPatientsItems[i] = strLine;
+            }
+         }
+
+         JOptionPane.showMessageDialog(null, 
+            showPatientsItems[0] + "\n" +
+            showPatientsItems[1] + "\n" +
+            showPatientsItems[2] + "\n" +
+            showPatientsItems[3] , "Show items", JOptionPane.PLAIN_MESSAGE);
+
+      } 
+      catch (Exception e) {
+         System.out.println(e);
+      }
+      fileInput.close();
+   }
         
    public void deleteItems() { // option 'D' - Delete the existing file
       try {
