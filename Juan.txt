@@ -1,0 +1,5 @@
+Name of the patients: Juan
+Patients file number: 2301
+Age of the patients: 45
+Sex of the patients: M
+patients Addresss: HC-58 Box Aguada PR, 00602

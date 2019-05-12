@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.util.*;
 import java.io.*;
+import java.lang.Object;
 
 public class App extends Main{
    String file, files, patientFile, outputDoc, strLine, error; // variable
@@ -133,6 +134,7 @@ public class App extends Main{
 
    public Vector patients() { // opcion 'C' - creaing patient file
       String nameOfPatients = JOptionPane.showInputDialog(null, "Name:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE);
+      int fileNumber = Integer.parseInt(JOptionPane.showInputDialog(null, "Patients file number:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE));
       int age = Integer.parseInt(JOptionPane.showInputDialog(null, "Age:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE));
       char sex = JOptionPane.showInputDialog(null, "Sex, please enter (M) for Men of (F) for Femal:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE).charAt(0);
       String patientsAddress = JOptionPane.showInputDialog(null, " Patients address:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE);
@@ -140,6 +142,7 @@ public class App extends Main{
       Vector vec = new Vector();
 
       vec.add(nameOfPatients);
+      vec.add(fileNumber);
       vec.add(age);
       vec.add(sex);
       vec.add(patientsAddress);
@@ -157,9 +160,10 @@ public class App extends Main{
          Vector vec1 = this.patients();
 
          fileOutput.println("Name of the patients: " + vec1.get(0));
-         fileOutput.println("Age of the patients: " + vec1.get(1));
-         fileOutput.println("Sex of the patients: " + vec1.get(2));
-         fileOutput.println("patients Addresss: " + vec1.get(3));
+         fileOutput.println("Patients file number: " + vec1.get(1));
+         fileOutput.println("Age of the patients: " + vec1.get(2));
+         fileOutput.println("Sex of the patients: " + vec1.get(3));
+         fileOutput.println("patients Addresss: " + vec1.get(4));
       } 
       catch (Exception e) {
         System.out.println(e);
@@ -168,7 +172,7 @@ public class App extends Main{
    }
 
    public void showPatients() { // showing patients regitration
-      String [] patientItem = new String[4];
+      String [] patientItem = new String[5];
 
       patientFile = JOptionPane.showInputDialog(null, "Name of Patiants ragister:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
       try {
@@ -187,7 +191,8 @@ public class App extends Main{
          patientItem[0] + "\n" +
          patientItem[1] + "\n" +
          patientItem[2] + "\n" +
-         patientItem[3], "Show Patients Registration", JOptionPane.PLAIN_MESSAGE);
+         patientItem[3] + "\n" +
+         patientItem[4], "Show Patients Registration", JOptionPane.PLAIN_MESSAGE);
 
       } 
       catch (Exception e) {
