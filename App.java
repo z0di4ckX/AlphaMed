@@ -1,10 +1,10 @@
 import javax.swing.*;
 import java.util.*;
 import java.io.*;
-import java.lang.Object;
+import java.lang.*;
 
 public class App extends Main{
-   String file, files, patientFile, outputDoc, strLine, error; // variable
+   String file, files, patientFile, strLine, error; // variable
            
    FileReader reader; // Opens existing document
    Scanner fileInput; // Allows us to see contents inside of document
@@ -13,36 +13,36 @@ public class App extends Main{
    Scanner input = new Scanner(System.in); // Scanner class  
 
     // menu method
-    void menu() {
-        String listMenu = " "; 
-
-        do {
-            listMenu = JOptionPane.showInputDialog(null, "a. Add items\n b. Show items\n c. patients registration\n d. show patients\n e. Remove items\n x. Exit", "Menu", JOptionPane.INFORMATION_MESSAGE);
+   void menu() {
+      String listMenu = " "; 
+   
+      do {
+         listMenu = JOptionPane.showInputDialog(null, "a. Add items\n b. Show items\n c. patients registration\n d. show patients\n e. Remove items\n x. Exit", "Menu", JOptionPane.INFORMATION_MESSAGE);
             
-            if (listMenu.equals ("a")) {
-               printItems();
-            }
-            else if (listMenu.equals ("b")) { 
-                showItems();
-            }
-            else if (listMenu.equals("c")) {
-               printPatients();
-            }
-            else if (listMenu.equals("d")) {
-               showPatients();
-            }
-            else if (listMenu.equals ("e")) {
-               deleteItems();
-           }
-            else if (listMenu.equals ("x")) {
-                JOptionPane.showMessageDialog(null, "Thank you for using our system. See you soon!", "Exit!", JOptionPane.INFORMATION_MESSAGE);
-                System.exit(0);
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Please try agen.", "Error!", JOptionPane.ERROR_MESSAGE);
-            }
-        } while(!listMenu.equals("x"));
-     } // menu()
+         if (listMenu.equals ("a")) {
+            printItems();
+         }
+         else if (listMenu.equals ("b")) { 
+            showItems();
+         }
+         else if (listMenu.equals("c")) {
+            printPatients();
+         }
+         else if (listMenu.equals("d")) {
+            showPatients();
+         }
+         else if (listMenu.equals ("e")) {
+            deleteItems();
+         }
+         else if (listMenu.equals ("x")) {
+            JOptionPane.showMessageDialog(null, "Thank you for using our system. See you soon!", "Exit!", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+         }
+         else {
+            JOptionPane.showMessageDialog(null, "Please try agen.", "Error!", JOptionPane.ERROR_MESSAGE);
+         }
+      } while(!listMenu.equals("x"));
+   } // menu()
      
    public Vector addItems() { // option 'a'
       String name = JOptionPane.showInputDialog(null, "Name of product:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE);
@@ -56,7 +56,7 @@ public class App extends Main{
       double price = Double.parseDouble(JOptionPane.showInputDialog(null, "Prices of products:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));
       int available = lot - damaged - sold;
       double total = sold * price;
-
+   
       Vector v = new Vector();
       v.add(name);
       v.add(description);
@@ -69,7 +69,7 @@ public class App extends Main{
       v.add(sold);
       v.add(price);
       v.add(total);
-
+   
       return (v);
    }// addItems
         
@@ -91,7 +91,7 @@ public class App extends Main{
          fileOutput.println("Sold: "+ve.get(8));
          fileOutput.println("Price: $ "+ve.get(9));
          fileOutput.println("Total: $ "+ve.get(10));
-
+      
       } catch(Exception e){
          System.out.println(e);
       }
@@ -100,19 +100,19 @@ public class App extends Main{
         
    public void showItems() { // option 'b'- Displays items already registered
       String [] item = new String[11];
-
+   
       file = JOptionPane.showInputDialog(null, "Name of file:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
       try {
          reader = new FileReader(file + ".txt");
          fileInput = new Scanner(reader);
-
+      
          for (int i = 0; i < item.length; i++) { // appends .txt file lines to array
             if (fileInput.hasNext()) {
                strLine = fileInput.nextLine();
                item[i] = strLine;
             }
          } // end for
-
+      
          //Display file contents
          JOptionPane.showMessageDialog(null, 
             item[0] + " ---- " + item[2] + "\n" +
@@ -128,6 +128,7 @@ public class App extends Main{
       }
       catch (Exception e) {
          System.out.println(e);
+         JOptionPane.showMessageDialog(null, "File not Found");
       }
       fileInput.close();
    } // Show items
@@ -138,75 +139,86 @@ public class App extends Main{
       int age = Integer.parseInt(JOptionPane.showInputDialog(null, "Age:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE));
       char sex = JOptionPane.showInputDialog(null, "Sex, please enter (M) for Men of (F) for Femal:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE).charAt(0);
       String patientsAddress = JOptionPane.showInputDialog(null, " Patients address:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE);
-
+      String appointment = JOptionPane.showInputDialog(null, "Date of the Appointment  (MMDDYYYY):\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE);
+   
       Vector vec = new Vector();
-
+   
       vec.add(nameOfPatients);
       vec.add(fileNumber);
       vec.add(age);
       vec.add(sex);
       vec.add(patientsAddress);
-
+      vec.add(appointment);
+   
       return (vec);
    }
 
    public void printPatients() { // print patient data
    
       patientFile = JOptionPane.showInputDialog(null, "Name of the patient file:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
-
+   
       try {
          fileOutput = new PrintWriter(patientFile + ".txt");
-
+      
          Vector vec1 = this.patients();
-
+      
          fileOutput.println("Name of the patients: " + vec1.get(0));
          fileOutput.println("Patients file number: " + vec1.get(1));
          fileOutput.println("Age of the patients: " + vec1.get(2));
          fileOutput.println("Sex of the patients: " + vec1.get(3));
          fileOutput.println("patients Addresss: " + vec1.get(4));
+         fileOutput.println("Appointment: " + vec1.get(5));
       } 
       catch (Exception e) {
-        System.out.println(e);
+         System.out.println(e);
       }
       fileOutput.close();
    }
 
    public void showPatients() { // showing patients regitration
-      String [] patientItem = new String[5];
-
-      patientFile = JOptionPane.showInputDialog(null, "Name of Patiants ragister:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
+      String [] patientItem = new String[6];
+      String patientFile = "", 
+             patientNumber = "", 
+             appDate = "";
+   
+      patientNumber = JOptionPane.showInputDialog(null, "Patients File Number:\n", "Find Patient", JOptionPane.INFORMATION_MESSAGE);
+      appDate = JOptionPane.showInputDialog(null, "Apointment Date (MMDDYYYY):\n", "Find Patient", JOptionPane.INFORMATION_MESSAGE);
       try {
-         reader = new FileReader(patientFile + ".txt");
+         patientFile = this.invFiles(patientNumber, appDate);
+         
+         reader = new FileReader(patientFile);
          fileInput = new Scanner(reader);
-
+      
          for (int i = 0; i < patientItem.length; i++) { // appends .txt file lines to array
             if (fileInput.hasNext()) {
                strLine = fileInput.nextLine();
                patientItem[i] = strLine;
             }
          } // end for
-
+      
          //Display file contents
          JOptionPane.showMessageDialog(null, 
-         patientItem[0] + "\n" +
-         patientItem[1] + "\n" +
-         patientItem[2] + "\n" +
-         patientItem[3] + "\n" +
-         patientItem[4], "Show Patients Registration", JOptionPane.PLAIN_MESSAGE);
-
+            patientItem[0] + "\n" +
+            patientItem[1] + "\n" +
+            patientItem[2] + "\n" +
+            patientItem[3] + "\n" +
+            patientItem[4] + "\n" +
+            patientItem[5], "Show Patients Registration", JOptionPane.PLAIN_MESSAGE);
+      
       } 
       catch (Exception e) {
          System.out.println(e);
+         JOptionPane.showMessageDialog(null, "Patient not Found");
       }
       fileInput.close();
    }
         
    public void deleteItems() { // option 'D' - Delete the existing file
       try {
-
+      
          File files = new File(JOptionPane.showInputDialog(null, "Name of file:\n", "File name", JOptionPane.INFORMATION_MESSAGE)); // add .txt
          files = new File(files + ".txt");
-
+      
          if (files.delete()) {
             JOptionPane.showMessageDialog(null, "This file was deleted", "Delete Itmes", JOptionPane.INFORMATION_MESSAGE); // delete the file
          }
@@ -218,4 +230,45 @@ public class App extends Main{
          System.out.println(e);
       }
    }
-}
+   
+   // To find patient archives
+   public String invFiles(String id, String appointment) {
+      String searchFile = "", 
+             appoint = "",
+             idPatient = "";
+      File rootFile = new File(".");
+      File [] invFile = rootFile.listFiles();
+      
+      for (int i = 0; i < invFile.length; i++) {
+         if (invFile[i].getName().endsWith(".txt")) {
+            try {
+
+               reader = new FileReader(invFile[i].getName());
+               fileInput = new Scanner(reader);
+               do {
+                  strLine = fileInput.nextLine();
+                  if (strLine.endsWith(id)) {
+                     idPatient = id;
+                  } else if (strLine.endsWith(appointment)) {
+                     appoint = appointment;
+                  }
+
+                  if ((idPatient != "") && (appoint != "")) {
+                     if ((appoint.equals(appointment) && (id.equals(idPatient)))) {
+                        searchFile = invFile[i].getName();
+                        fileInput.close();
+                        break;
+                     }
+                  }
+               } while (fileInput.hasNext());
+
+               fileInput.close();
+            } catch (Exception e) { 
+            }
+         }
+      } // end for
+      
+      fileInput.close();
+      return (searchFile);
+   } // invFiles()
+} // end App Class
