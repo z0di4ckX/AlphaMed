@@ -128,10 +128,47 @@ public class App extends Main{
       }
       catch (Exception e) {
          System.out.println(e);
-         JOptionPane.showMessageDialog(null, "File not Found");
+         JOptionPane.showMessageDialog(null, "File not found");
       }
       fileInput.close();
    } // Show items
+
+   public void subShowItems() { // sub-menu
+      String[] subShowItemsMenu = new String[11];
+
+      file = JOptionPane.showInputDialog(null, "Name of file:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
+
+      try {
+       reader = new FileReader(file + ".txt");
+       fileInput = new Scanner(reader);
+       
+       for(int i = 0; i < subShowItems.length; i++) {
+         
+         if(fileInput.hasNext()) {
+            strLine = fileInput.nextLine();
+            subShowItems[i] = strLine;
+         }// end if
+       } // end for loop
+
+       JOptionPane.showMessageDialog(null, 
+         subShowItems[0] + "\n" +
+         subShowItems[1] + "\n" +
+         subShowItems[2] + "\n" +
+         subShowItems[3] + "\n" +
+         subShowItems[4] + "\n" +
+         subShowItems[5] + "\n" +
+         subShowItems[6] + "\n" +
+         subShowItems[7] + "\n" +
+         subShowItems[8] + "\n" +
+         subShowItems[9] + "\n" +
+         subShowItems[10], "Show your Items", JOptionPane.INFORMATION_MESSAGE);
+      } 
+      catch (Exception e) {
+        System.out.println(e);
+        JOptionPane.showMessageDialog(null, "File not found")
+      }
+      fileInput.close();
+   }
 
    public Vector patients() { // opcion 'C' - creaing patient file
       String nameOfPatients = JOptionPane.showInputDialog(null, "Name:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE);
