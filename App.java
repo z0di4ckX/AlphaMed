@@ -133,6 +133,20 @@ public class App extends Main{
       fileInput.close();
    } // Show items
 
+   public Vector subMenuShowItems() {
+      String firstItems = JOptionPane.showInputDialog(null, "Your first items:\n", "Shopping", JOptionPane.INFORMATION_MESSAGE);
+      int quantityItems = Integer.parseInt(JOptionPane.showInputDialog(null, "How many do you buy?\n", "Shopping", JOptionPane.INFORMATION_MESSAGE));
+      String dateItems = JOptionPane.showInputDialog(null, "The day of you buy?\n", "Shopping", JOptionPane.INFORMATION_MESSAGE);
+
+      Vector vector1 = new Vector();
+
+      vector1.add(firstItems);
+      vector1.add(quantityItems);
+      vector1.add(dateItems);
+
+      return(vector1);
+   } // end subMenuShowItems
+
    public void subShowItems() { // sub-menu
       String[] subShowItemsMenu = new String[11];
 
@@ -169,7 +183,7 @@ public class App extends Main{
       }
       fileInput.close();
    }
-
+   
    public Vector patients() { // opcion 'C' - creaing patient file
       String nameOfPatients = JOptionPane.showInputDialog(null, "Name:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE);
       int fileNumber = Integer.parseInt(JOptionPane.showInputDialog(null, "Patients file number:\n", "Patients Registration", JOptionPane.INFORMATION_MESSAGE));
