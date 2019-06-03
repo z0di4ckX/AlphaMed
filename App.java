@@ -156,30 +156,30 @@ public class App extends Main{
        reader = new FileReader(file + ".txt");
        fileInput = new Scanner(reader);
        
-       for(int i = 0; i < subShowItems.length; i++) {
+       for(int i = 0; i < subShowItemsMenu.length; i++) {
          
          if(fileInput.hasNext()) {
             strLine = fileInput.nextLine();
-            subShowItems[i] = strLine;
+            subShowItemsMenu[i] = strLine;
          }// end if
        } // end for loop
 
        JOptionPane.showMessageDialog(null, 
-         subShowItems[0] + "\n" +
-         subShowItems[1] + "\n" +
-         subShowItems[2] + "\n" +
-         subShowItems[3] + "\n" +
-         subShowItems[4] + "\n" +
-         subShowItems[5] + "\n" +
-         subShowItems[6] + "\n" +
-         subShowItems[7] + "\n" +
-         subShowItems[8] + "\n" +
-         subShowItems[9] + "\n" +
-         subShowItems[10], "Show your Items", JOptionPane.INFORMATION_MESSAGE);
+         subShowItemsMenu[0] + "\n" +
+         subShowItemsMenu[1] + "\n" +
+         subShowItemsMenu[2] + "\n" +
+         subShowItemsMenu[3] + "\n" +
+         subShowItemsMenu[4] + "\n" +
+         subShowItemsMenu[5] + "\n" +
+         subShowItemsMenu[6] + "\n" +
+         subShowItemsMenu[7] + "\n" +
+         subShowItemsMenu[8] + "\n" +
+         subShowItemsMenu[9] + "\n" +
+         subShowItemsMenu[10], "Show your Items", JOptionPane.INFORMATION_MESSAGE);
       } 
       catch (Exception e) {
         System.out.println(e);
-        JOptionPane.showMessageDialog(null, "File not found")
+        JOptionPane.showMessageDialog(null, "File not found", "Message", JOptionPane.INFORMATION_MESSAGE);
       }
       fileInput.close();
    }
