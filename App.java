@@ -147,6 +147,24 @@ public class App extends Main{
       return(vector1);
    } // end subMenuShowItems
 
+   public void printSubMenuShowItems() {
+      file = JOptionPane.showInputDialog(null, "Name of file:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
+
+      try {
+         fileOutput = new PrintWriter(file + ".txt");
+         
+         Vector vector2 = this.subMenuShowItems();
+
+         fileOutput.println("Nanme:\n" + vector2.get(0));
+         fileOutput.println("Nanme:\n" + vector2.get(1));
+         fileOutput.println("Nanme:\n" + vector2.get(2));
+      } 
+      catch (Exception e) {
+         System.out.println(e);
+         JOptionPane.showMessageDialog(null, "File not found", "Messange", JOptionPane.INFORMATION_MESSAGE);
+      }
+   }
+
    public void subShowItems() { // sub-menu
       String[] subShowItemsMenu = new String[11];
 
