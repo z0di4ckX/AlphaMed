@@ -155,9 +155,9 @@ public class App extends Main{
          
          Vector vector2 = this.subMenuShowItems();
 
-         fileOutput.println("Nanme:\n" + vector2.get(0));
-         fileOutput.println("Nanme:\n" + vector2.get(1));
-         fileOutput.println("Nanme:\n" + vector2.get(2));
+         fileOutput.println("Name: " + vector2.get(0));
+         fileOutput.println("Quantity: " + vector2.get(1));
+         fileOutput.println("Date: " + vector2.get(2));
       } 
       catch (Exception e) {
          System.out.println(e);
