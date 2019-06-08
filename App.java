@@ -17,7 +17,7 @@ public class App extends Main{
       String listMenu = " "; 
    
       do {
-         listMenu = JOptionPane.showInputDialog(null, "a. Add items\n b. Show items\n c. patients registration\n d. show patients\n e. Remove items\n x. Exit", "Menu", JOptionPane.INFORMATION_MESSAGE);
+         listMenu = JOptionPane.showInputDialog(null, "a. Add items\n b. Show items \n B. Sub-menu\n c. patients registration\n d. show patients\n e. Remove items\n x. Exit", "Menu", JOptionPane.INFORMATION_MESSAGE);
             
          if (listMenu.equals ("a")) {
             printItems();
@@ -147,7 +147,7 @@ public class App extends Main{
       return(vector1);
    } // end subMenuShowItems
 
-   public void printSubMenuShowItems() {
+   public void printSubMenuShowItems() { // print-subMenu
       file = JOptionPane.showInputDialog(null, "Name of file:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
 
       try {
@@ -163,7 +163,7 @@ public class App extends Main{
          System.out.println(e);
          JOptionPane.showMessageDialog(null, "File not found", "Messange", JOptionPane.INFORMATION_MESSAGE);
       }
-   }
+   }// end print-subMenu method 
 
    public void subShowItems() { // sub-menu
       String[] subShowItemsMenu = new String[11];

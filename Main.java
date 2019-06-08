@@ -12,7 +12,7 @@ public class Main {
          App app = new App(); // App class
          LogIn login = new LogIn(); // logIn class
          
-         login.login(); // call login method
+        //  login.login(); // call login method
          app.menu(); // call menu method
        }
 }

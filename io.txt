@@ -1,0 +1,11 @@
+Name: panadol
+Description: para el dolor de cabeza
+Items code: DRE234
+Bought lot on: 12 de febreo del 2019
+Expiration lot: 11 de abril del 2024
+Quantity bought: 500
+Available: 113
+Expiration: 100
+Sold: 287
+Price: $ 1.22
+Total: $ 350.14
