@@ -17,7 +17,7 @@ public class App extends Main{
       String listMenu = " "; 
    
       do {
-         listMenu = JOptionPane.showInputDialog(null, "a. Add items\n b. Show items \n B. Sub-menu\n c. patients registration\n d. show patients\n e. Remove items\n x. Exit", "Menu", JOptionPane.INFORMATION_MESSAGE);
+         listMenu = JOptionPane.showInputDialog(null, "a. Add items\n b. Show items \n B. Sub-menu\n C. Show sub-menu\n c. Patients registration\n d. Show patients\n e. Remove items\n x. Exit", "Menu", JOptionPane.INFORMATION_MESSAGE);
             
          if (listMenu.equals ("a")) {
             printItems();
