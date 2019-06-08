@@ -28,6 +28,9 @@ public class App extends Main{
          else if (listMenu.equals("B")) {
             printSubMenuShowItems();
          }
+         else if (listMenu.equals("C")) {
+            subShowItems();
+         }
          else if (listMenu.equals("c")) {
             printPatients();
          }
