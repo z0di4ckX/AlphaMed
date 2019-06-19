@@ -53,7 +53,7 @@ public class App extends Main{
    public Vector addItems() { // option 'a'
       String name = JOptionPane.showInputDialog(null, "Name of product:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE);
       String description = JOptionPane.showInputDialog(null, "Description of the items:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE); // Description product
-      String itemsCode = JOptionPane.showInputDialog(null, "Items code:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE); // Items code
+      String itemsCode = JOptionPane.showInputDialog(null, String.format("Items code:\n %s%d", "Adding items", JOptionPane.INFORMATION_MESSAGE)); // Items code
       String day = JOptionPane.showInputDialog(null, "Date of lot bought:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE);
       String expiry = JOptionPane.showInputDialog(null, "Date of lot expiration:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE); // Expiration date
       int lot = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantity bought:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));// bought stack
@@ -172,12 +172,12 @@ public class App extends Main{
    }// end print-subMenu method 
 
    public void subShowItems() { // sub-menu
-      String[] subShowItemsMenu = new String[11];
+      String[] subShowItemsMenu = new String[3];
 
-      file = JOptionPane.showInputDialog(null, "Name of file:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
+      files = JOptionPane.showInputDialog(null, "Name of file:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
 
       try {
-       reader = new FileReader(file + ".txt");
+       reader = new FileReader(files + ".txt");
        fileInput = new Scanner(reader);
        
        for(int i = 0; i < subShowItemsMenu.length; i++) {
@@ -191,19 +191,11 @@ public class App extends Main{
        JOptionPane.showMessageDialog(null, 
          subShowItemsMenu[0] + "\n" +
          subShowItemsMenu[1] + "\n" +
-         subShowItemsMenu[2] + "\n" +
-         subShowItemsMenu[3] + "\n" +
-         subShowItemsMenu[4] + "\n" +
-         subShowItemsMenu[5] + "\n" +
-         subShowItemsMenu[6] + "\n" +
-         subShowItemsMenu[7] + "\n" +
-         subShowItemsMenu[8] + "\n" +
-         subShowItemsMenu[9] + "\n" +
-         subShowItemsMenu[10], "Show your Items", JOptionPane.INFORMATION_MESSAGE);
+         subShowItemsMenu[2], "Show your Items", JOptionPane.INFORMATION_MESSAGE);
       } 
       catch (Exception e) {
         System.out.println(e);
-        JOptionPane.showMessageDialog(null, "File not found", "Message", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "File not found");
       }
       fileInput.close();
    }
@@ -246,6 +238,7 @@ public class App extends Main{
       } 
       catch (Exception e) {
          System.out.println(e);
+         JOptionPane.showMessageDialog(null, "Patient not found");
       }
       fileOutput.close();
    }
@@ -311,6 +304,7 @@ public class App extends Main{
       String searchFile = "", 
              appoint = "",
              idPatient = "";
+
       File rootFile = new File(".");
       File [] invFile = rootFile.listFiles();
       
@@ -338,7 +332,9 @@ public class App extends Main{
                } while (fileInput.hasNext());
 
                fileInput.close();
-            } catch (Exception e) { 
+            } catch (Exception e) {
+               System.out.println(e);
+               JOptionPane.showMessageDialog(null, "File not found", "ERROR MESSAGE", JOptionPane.INFORMATION_MESSAGE); 
             }
          }
       } // end for
