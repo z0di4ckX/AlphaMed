@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.util.*;
 import java.io.*;
-import java.lang.*;
 
 public class App extends Main{
    String file, files, patientFile, strLine, error; // variable
@@ -139,7 +138,7 @@ public class App extends Main{
       fileInput.close();
    } // Show items
 
-   public Vector subMenuShowItems() {
+   public Vector subMenuShowItems() { // sub-menu input data
       String firstItems = JOptionPane.showInputDialog(null, "Your first items:\n", "Shopping", JOptionPane.INFORMATION_MESSAGE);
       int quantityItems = Integer.parseInt(JOptionPane.showInputDialog(null, "How many do you buy?\n", "Shopping", JOptionPane.INFORMATION_MESSAGE));
       String dateItems = JOptionPane.showInputDialog(null, "The day of you buy?\n", "Shopping", JOptionPane.INFORMATION_MESSAGE);
@@ -159,16 +158,17 @@ public class App extends Main{
       try {
          fileOutput = new PrintWriter(files + ".txt");
          
-         Vector vector1 = this.subMenuShowItems();
+         Vector vectors = this.subMenuShowItems();
 
-         fileOutput.println("Name: " + vector1.get(0));
-         fileOutput.println("Quantity: " + vector1.get(1));
-         fileOutput.println("Date: " + vector1.get(2));
+         fileOutput.println("Name: " + vectors.get(0));
+         fileOutput.println("Quantity: " + vectors.get(1));
+         fileOutput.println("Date: " + vectors.get(2));
       } 
       catch (Exception e) {
          System.out.println(e);
          JOptionPane.showMessageDialog(null, "File not found", "Messange", JOptionPane.INFORMATION_MESSAGE);
       }
+      fileOutput.close();
    }// end print-subMenu method 
 
    public void subShowItems() { // sub-menu
