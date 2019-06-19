@@ -53,7 +53,7 @@ public class App extends Main{
    public Vector addItems() { // option 'a'
       String name = JOptionPane.showInputDialog(null, "Name of product:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE);
       String description = JOptionPane.showInputDialog(null, "Description of the items:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE); // Description product
-      String itemsCode = JOptionPane.showInputDialog(null, String.format("Items code:\n %s%d", "Adding items", JOptionPane.INFORMATION_MESSAGE)); // Items code
+      String itemsCode = JOptionPane.showInputDialog(null, String.format("Items code:\n %3s%3d", "Adding items", JOptionPane.INFORMATION_MESSAGE)); // Items code
       String day = JOptionPane.showInputDialog(null, "Date of lot bought:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE);
       String expiry = JOptionPane.showInputDialog(null, "Date of lot expiration:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE); // Expiration date
       int lot = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantity bought:\n", "Adding items", JOptionPane.INFORMATION_MESSAGE));// bought stack
