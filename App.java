@@ -154,16 +154,16 @@ public class App extends Main{
    } // end subMenuShowItems
 
    public void printSubMenuShowItems() { // print-subMenu
-      file = JOptionPane.showInputDialog(null, "Name of file:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
+      files = JOptionPane.showInputDialog(null, "Name of file:\n", "File name", JOptionPane.INFORMATION_MESSAGE);
 
       try {
-         fileOutput = new PrintWriter(file + ".txt");
+         fileOutput = new PrintWriter(files + ".txt");
          
-         Vector vector2 = this.subMenuShowItems();
+         Vector vector1 = this.subMenuShowItems();
 
-         fileOutput.println("Name: " + vector2.get(0));
-         fileOutput.println("Quantity: " + vector2.get(1));
-         fileOutput.println("Date: " + vector2.get(2));
+         fileOutput.println("Name: " + vector1.get(0));
+         fileOutput.println("Quantity: " + vector1.get(1));
+         fileOutput.println("Date: " + vector1.get(2));
       } 
       catch (Exception e) {
          System.out.println(e);
